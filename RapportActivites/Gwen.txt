@@ -1,0 +1,11 @@
+************************
+Rapport d'activités Gwen
+************************
+
+13/12
+	Création Git Repository GPSteal
+	Recherches sur API google MAPS
+	
+	Activer Google Maps Javascript API
+	Créer les clés pour les différentes API qu'on souhaite utiliser
+	Samples -> Geolocate
