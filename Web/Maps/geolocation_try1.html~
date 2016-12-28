@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+        width: 60%;
+      }
+      #button {
+      	height: 10%;
+      	width:10%;
+      }
+    </style>
+  </head>
+  <body>
+  	<h1 align=center><b> GPSteal localisation </b></h1>
+    <div id="map"></div>
+    <script>
+// Note: This example requires that you consent to location sharing when
+// prompted by your browser. If you see the error "The Geolocation service
+// failed.", it means you probably did not give permission for the browser to
+// locate you.
+
+function initMap() {
+  	// My positionning !
+  	var map = new google.maps.Map(document.getElementById('map'), {
+		center: {lat: 0, lng: 0},
+		zoom: 10
+	});
+	
+	//Voiture
+	var posCar = {lat:48.5111,lng:2.2059};
+
+	var carString = '<div id="content">'+
+	  '<div id="Car">'+
+	  '</div>'+
+	  '<h3 id="firstHeading" class="firstHeading">The car was here the last time GPS coordinates were received </h3>'+
+	  '</div>';
+	  
+	var carWindow = new google.maps.InfoWindow({content: carString});
+    
+    var imageCar = 'images/pic.jpg';
+      
+	var markerCar = new google.maps.Marker({
+		position: posCar,
+		map: map,
+		icon: imageCar
+	});
+	markerCar.addListener('click', function() {
+		carWindow.open(map, markerCar);
+	});
+	
+	//Personne
+	var personString = '<div id="content">'+
+      '<div id="Me">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Me</h1>'+
+      '</div>';
+      
+    var personWindow = new google.maps.InfoWindow({content: personString});
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var posPerson = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      //infoWindow.setPosition(pos);
+      //infoWindow.setContent('Location found.');
+      map.setCenter(posCar);
+      
+      // Optionnel : 
+      var imagePerson = 'images/bleu.png';
+      
+      var markerPerson = new google.maps.Marker({
+		position: posPerson,
+		map: map,
+		icon: imagePerson
+	  	});
+	  markerPerson.addListener('click', function() {
+		personWindow.open(map, markerPerson);
+	  });
+  	
+    }, function() {
+      var infoWindow = new google.maps.InfoWindow({map: map});
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+}
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUBc6FxioMYwPuBVZIRsHzigXJbV95XNs&signed_in=true&callback=initMap"
+        async defer>
+    </script>
+  </body>
+</html>
