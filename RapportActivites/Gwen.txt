@@ -2,6 +2,17 @@
 Rapport d'activités Gwen
 ************************
 
+Serveur et paquets : 
+	- apache2
+	- php
+	- libapache2-mod-php7.0
+	- sqlite3
+	- php7.0-sqlite
+
+Notes : 
+	chown www-data. 			pour ouvrir les bases de données
+	chmod 777 database
+	
 13/12
 	Création Git Repository GPSteal
 	Recherches sur API google MAPS
@@ -18,4 +29,18 @@ Rapport d'activités Gwen
 			Coordonnées de la personne et marqueur : récupérer les données du navigateur internet si la personne autorise 
 			Coordonnées de la voiture et marqueur : 1) mettre des coordonnées au hasard
 			
-
+02.01
+	Création base de données db/dbtest
+	Création table lat_long avec 2 données de test (chartres, la defense)
+	
+03.01
+	Accès à la base de données depuis un fichier php 
+		accès à la base de données en php
+			récupération de la latitude et la longitude dans des variables php $lat et $long
+		accès a la variable php dans le script javascript
+	Ajout d'un bouton pour rafraichir la page
+	Ajout des informations sur longitude et latitude
+	Obtention de l'adresse en fonction des coordonnées GPS
+	Affichage dans les bulles d'informations
+	
+	Pas encore réussi à récupérer cette donnée et à l'afficher ailleurs
