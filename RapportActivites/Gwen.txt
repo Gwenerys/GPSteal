@@ -12,28 +12,36 @@ Serveur et paquets :
 Notes : 
 	chown www-data. 			pour ouvrir les bases de données
 	chmod 777 database
-	
+
+*****	
 13/12
+*****
 	Création Git Repository GPSteal
 	Recherches sur API google MAPS
 	
 	Activer Google Maps Javascript API
 	Créer les clés pour les différentes API qu'on souhaite utiliser
 	Samples -> Geolocate
-	
+
+*****	
 27.12
+*****
 	Exemple de page pour géolocaliser selon les coordonnées fournies par le navigateur
 	Modifications pour avoir des coordonnées en durs
 		Initialisation de la fenêtre : mettre les coordonnées
 			Nécessite rechargement de la fenêtre à chaque fois que de nouvelles coordonnées arrivent : pas tellement un soucis si on envoit pas des coordonnées très souvent
 			Coordonnées de la personne et marqueur : récupérer les données du navigateur internet si la personne autorise 
 			Coordonnées de la voiture et marqueur : 1) mettre des coordonnées au hasard
-			
+
+*****			
 02.01
+*****
 	Création base de données db/dbtest
 	Création table lat_long avec 2 données de test (chartres, la defense)
-	
+
+*****	
 03.01
+*****
 	Accès à la base de données depuis un fichier php 
 		accès à la base de données en php
 			récupération de la latitude et la longitude dans des variables php $lat et $long
@@ -44,3 +52,45 @@ Notes :
 	Affichage dans les bulles d'informations
 	
 	Pas encore réussi à récupérer cette donnée et à l'afficher ailleurs
+
+*****	
+10.01
+*****
+	Regroupement avec Antoine
+	
+	Installation de mysql
+		apt-get install mysql-server php7.0-mysql
+	Aller dans le dossier où on veut créer la bdd
+		mysql -u root -p
+		rentrer le mdp
+		CREATE USER 'projetiot'@'localhost' IDENTIFIED BY 'gpsteal'
+		GRANT ALL PRIVILEGES ON * . * TO 'projetiot'@'localhost'
+			-> WITH GRANT OPTION;
+		create database gpsteal;
+		source gpsteal_data.sql
+	
+	***** Error : Driver not found *****
+	Modifier le fichier /etc/mysql/apache2/php.ini
+		Décommenter la ligne : extension=php_pdo_mysql.dll
+		Trouver la ligne : pdo_mysql.default_socket=/var/run/mysqld/mysqld.sock
+			et compléter avec le chemin vers mysqld.sock
+	Rédémarrer Apache : /etc/init.d/apache2 restart
+	Rédémarrer Mysql : /etc/init.d/mysql restart
+	
+	***** La page 127.0.0.1/Localhost ne fonctionne pas *****
+	Version php7.0 qui ne fonctionne pas si il y a des erreurs : break dans un if 
+	
+	CSS
+		Apprentissage et tests
+		
+*****
+13.01
+*****
+	Continuer à modifier le CSS
+	
+*****
+16.01
+*****
+	Travail sur le pitch et la présentation
+	
+	
